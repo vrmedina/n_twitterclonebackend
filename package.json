@@ -1,0 +1,25 @@
+{
+  "name": "n_twitterclonebackend",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vrmedina/n_twitterclonebackend.git"
+  },
+  "keywords": [],
+  "author": "Victor Medina <vrmm1998@gmail.com> (https://vrmedina.github.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vrmedina/n_twitterclonebackend/issues"
+  },
+  "homepage": "https://github.com/vrmedina/n_twitterclonebackend#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^6.6.5"
+  }
+}
+
