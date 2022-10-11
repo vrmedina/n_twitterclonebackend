@@ -1,27 +1,27 @@
 const express = require("express");
-const UserModel = require("../models/UserModel");
+const followerModel = require("../models/followerModel");
 const router = express.Router();
 //CREATE
 router.post("/", async (req, res) => {
-  const user = new UserModel(req.user);
-  await user.save();
+  const follower = new followerModel(req.follower);
+  await follower.save();
   res.status(200);
 });
 //READ
 router.get("/", async (req, res) => {
-  const user = await UserModel.find({ id: req.id });
+  const follower = await followerModel.find({ id: req.id });
   res.status(200).json({
-    result: user,
+    result: follower,
   });
 });
 //UPDATE
 router.put("/", async (req, res) => {
-  const user = await UserModel.updateOne({ id: req.id }, { $set: req.body });
+  const follower = await followerModel.updateOne({ id: req.id }, { $set: req.body });
   res.status(200);
 });
 //DELETE
 router.delete("/", async (req, res) => {
-  await UserModel.deleteOne({ id: req.id });
+  await followerModel.deleteOne({ id: req.id });
   res.status(200);
 });
 
