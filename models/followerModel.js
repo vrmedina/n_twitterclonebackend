@@ -1,8 +1,13 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
-const schema = mongoose.Schema({
-	firstName: String,
-	lastName: String,
-})
-
-module.exports = mongoose.model("User", schema)
+const followerModel = new mongoose.Schema({
+  first_name:  {type: String, required: true},
+  last_name:  {type: String, required: true},
+  username:  {type: String, required: true},
+  phone:  {type: Number, required: true},
+  email: {type: String, required: true},
+  date: { type: Date, default: Date.now },
+  follower: {type: String, required: true},
+});
+   
+module.exports = mongoose.model("Follower", followerModel);
