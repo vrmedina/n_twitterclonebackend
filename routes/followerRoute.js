@@ -14,11 +14,6 @@ router.get("/", async (req, res) => {
     result: follower,
   });
 });
-//UPDATE
-router.put("/", async (req, res) => {
-  const follower = await followerModel.updateOne({ id: req.id }, { $set: req.body });
-  res.status(200);
-});
 //DELETE
 router.delete("/", async (req, res) => {
   await followerModel.deleteOne({ id: req.id });

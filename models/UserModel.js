@@ -1,12 +1,14 @@
 const mongoose = require("mongoose");
+const followerModel = require("./followerModel");
 
 const userModel = new mongoose.Schema({
-  first_name:  {type: String, required: true},
-  last_name:  {type: String, required: true},
-  username:  {type: String, required: true},
-  phone:  {type: Number, required: true},
-  email: {type: String, required: true},
-  date: { type: Date, default: Date.now },
+  name:  {type: String, required: true},//name displayed on screen
+  username:  {type: String, required: true},//unique username
+  location:  {type: String, default: ''},//where the user lives
+  description: {type: String, default: ''},//a brief description of the users profile
+  following:  {type: [followerModel], default: []},//number of users being followed by the user
+  followers:  {type: [followerModel], default: []},//number of users following the user
+  date: { type: Date, default: Date.now},//ideally...the birthdate of the user
 });
-   
+
 module.exports = mongoose.model("User", userModel);

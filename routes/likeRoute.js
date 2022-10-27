@@ -14,11 +14,6 @@ router.get("/", async (req, res) => {
     result: like,
   });
 });
-//UPDATE
-router.put("/", async (req, res) => {
-  const like = await likeModel.updateOne({ id: req.id }, { $set: req.body });
-  res.status(200);
-});
 //DELETE
 router.delete("/", async (req, res) => {
   await likeModel.deleteOne({ id: req.id });
