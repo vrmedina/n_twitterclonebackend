@@ -1,6 +1,6 @@
 const express = require('express');
-const app = express();
 const mongoose = require('mongoose');
+const app = express();
 
 // MIDDLEWARE JSON
 app.use(express.json());
@@ -34,4 +34,4 @@ const likeRoute = require('./routes/likeRoute')
 app.use("/like", likeRoute)
 
 // OPENING APP PORT
-app.listen(3000, () => console.log("Está vivo! >:D"));
+app.listen(3000, () => console.log(`Server Started at ${3000}`))

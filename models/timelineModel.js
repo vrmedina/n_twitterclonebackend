@@ -1,8 +1,9 @@
-const mongoose = require("mongoose");
+/* const mongoose = require("mongoose");
+const  ObjectId = require('mongodb').ObjectId;
 const tweetModel = require("./tweetModel");
 
 const timelineModel = new mongoose.Schema({
-  tweets:  {type: tweetModel, default: []},
+  tweets:  {type: ObjectId, default: []},
 });
    
-module.exports = mongoose.model("Timeline", timelineModel);
+module.exports = mongoose.model("Timeline", timelineModel); */
