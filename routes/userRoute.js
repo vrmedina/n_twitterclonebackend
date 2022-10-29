@@ -30,9 +30,9 @@ router.get("/readOne/:id", async (req, res) => {
 //READ ALL
 router.get("/readAll", async (req, res) => {
   try {
-    const user = await userModel.find();
+    const users = await userModel.find();
     res.status(200).json({
-      result: user,
+      result: users,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });

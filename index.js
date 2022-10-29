@@ -25,7 +25,7 @@ const tweetRoute = require('./routes/tweetRoute')
 app.use("/tweet", tweetRoute)
 
 const followerRoute = require('./routes/followerRoute')
-app.use("/follower", followerRoute)
+app.use("/follow", followerRoute)
 
 const timelineRoute = require('./routes/timelineRoute')
 app.use("/timeline", timelineRoute)
