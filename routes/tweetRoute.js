@@ -1,5 +1,6 @@
 const express = require("express");
 const tweetModel = require("../models/tweetModel");
+const likeModel = require("../models/likeModel");
 const router = express.Router();
 //CREATE
 router.post("/create", async (req, res) => {
@@ -18,6 +19,8 @@ router.post("/create", async (req, res) => {
 router.get("/readOne/:twid", async (req, res) => {
   try {
     const tweet = await tweetModel.findById(req.params.twid);
+    const likes = await likeModel.find({ tweet: req.params.twid });
+    tweet.likes = likes.length
     res.status(200).json({
       result: tweet,
     });
@@ -29,6 +32,10 @@ router.get("/readOne/:twid", async (req, res) => {
 router.get("/readAll/:uid", async (req, res) => {
   try {
     const tweets = await tweetModel.find({user: req.params.uid});
+    for (const e in tweets) {
+      const likes = await likeModel.find({ tweet: tweets[e]._id });
+      tweets[e].likes = likes.length
+    }
     res.status(200).json({
       result: tweets,
     });
