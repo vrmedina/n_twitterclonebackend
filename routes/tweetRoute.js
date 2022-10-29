@@ -28,7 +28,7 @@ router.get("/readOne/:twid", async (req, res) => {
 //READ ALL
 router.get("/readAll/:uid", async (req, res) => {
   try {
-    const user = await tweetModel.find({_id: uid});
+    const user = await tweetModel.find({user: req.params.uid});
     res.status(200).json({
       result: user,
     });
@@ -37,25 +37,25 @@ router.get("/readAll/:uid", async (req, res) => {
   }
 });
 //UPDATE
-router.patch("/update/:id", async (req, res) => {
+router.patch("/update/:twid", async (req, res) => {
   try {
-    const user = await tweetModel.findByIdAndUpdate(
-      req.params.id,
-      { $set: req.body }
+    const tweet = await tweetModel.findByIdAndUpdate(
+      req.params.twid,
+      { $set: {text: req.body.text} }
     );
     res.status(200).json({
-      result: "User updated successfully",
+      result: "Tweet edited successfully",
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 //DELETE
-router.delete("/delete/:id", async (req, res) => {
+router.delete("/delete/:twid", async (req, res) => {
   try {
-    await tweetModel.findByIdAndDelete({ id: req.params.id });
+    await tweetModel.findByIdAndDelete(req.params.twid);
     res.status(200).json({
-      result: "User deleted successfully",
+      result: "Tweet deleted successfully",
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
