@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 const ObjectId = require('mongodb').ObjectId;
-const userModel = require("./userModel");
-const tweetModel = require("./tweetModel");
+//const userModel = require("./userModel");
+//const tweetModel = require("./tweetModel");
 
 const likeModel = new mongoose.Schema({
-  username:  {type: ObjectId, required: true},
+  user:  {type: ObjectId, required: true},
   tweet: {type: ObjectId, required: true},
 });
    

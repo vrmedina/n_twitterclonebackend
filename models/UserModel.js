@@ -7,8 +7,8 @@ const userModel = new mongoose.Schema({
   username: { type: String, required: true }, //unique username
   location: { type: String, default: "" }, //where the user lives
   description: { type: String, default: "" }, //a brief description of the users profile
-  following: { type: [ObjectId], default: [] }, //number of users being followed by the user
-  followers: { type: [ObjectId], default: [] }, //number of users following the user
+  following: { type: Number, default: 0 }, //number of users being followed by the user
+  followers: { type: Number, default: 0 }, //number of users following the user
   date: { type: Date, default: Date.now }, //ideally...the birthdate of the user
 });
 
