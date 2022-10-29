@@ -19,9 +19,17 @@ router.post("/create", async (req, res) => {
 router.get("/readFollowers/:uid", async (req, res) => {
   try {
     const followersId = await followerModel.find({ followed: req.params.uid });
-    const followers = await userModel.find().where('_id').in(followersId.map(e=>e.follower));
+    const users = await userModel.find().where('_id').in(followersId.map(e=>e.follower));
+    for (const e in users) {
+      const followersId = await followerModel.find({ followed: users[e]._id });
+      const followers = (await userModel.find().where('_id').in(followersId.map(e => e.follower))).length;
+      const followedId = await followerModel.find({ follower: users[e]._id });
+      const followed = (await userModel.find().where('_id').in(followedId.map(e => e.followed))).length;
+      users[e].followers = followers
+      users[e].following = followed
+    }
     res.status(200).json({
-      result: followers,
+      result: users,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -31,9 +39,17 @@ router.get("/readFollowers/:uid", async (req, res) => {
 router.get("/readFollowed/:uid", async (req, res) => {
   try {
     const followedId = await followerModel.find({ follower: req.params.uid });
-    const followed = await userModel.find().where('_id').in(followedId.map(e=>e.followed));
+    const users = await userModel.find().where('_id').in(followedId.map(e=>e.followed));
+    for (const e in users) {
+      const followersId = await followerModel.find({ followed: users[e]._id });
+      const followers = (await userModel.find().where('_id').in(followersId.map(e => e.follower))).length;
+      const followedId = await followerModel.find({ follower: users[e]._id });
+      const followed = (await userModel.find().where('_id').in(followedId.map(e => e.followed))).length;
+      users[e].followers = followers
+      users[e].following = followed
+    }
     res.status(200).json({
-      result: followed,
+      result: users,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });

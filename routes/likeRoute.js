@@ -31,7 +31,6 @@ router.get("/readLiked/:uid", async (req, res) => {
 router.get("/readLikes/:uid", async (req, res) => {
   try {
     const liked = await likeModel.find({ user: req.params.uid });
-    //const tweets = await tweetModel.find().where('_id').in(liked.map(e=>e.tweet));
     res.status(200).json({
       result: liked,
     });

@@ -1,5 +1,6 @@
 const express = require("express");
 const userModel = require("../models/userModel");
+const followerModel = require("../models/followerModel");
 const router = express.Router();
 //CREATE
 router.post("/create", async (req, res) => {
@@ -20,6 +21,12 @@ router.post("/create", async (req, res) => {
 router.get("/readOne/:id", async (req, res) => {
   try {
     const user = await userModel.findById(req.params.id);
+    const followersId = await followerModel.find({ followed: user._id });
+    const followers = (await userModel.find().where('_id').in(followersId.map(e => e.follower))).length;
+    const followedId = await followerModel.find({ follower: user._id });
+    const followed = (await userModel.find().where('_id').in(followedId.map(e => e.followed))).length;
+    user.followers = followers
+    user.following = followed
     res.status(200).json({
       result: user,
     });
@@ -30,7 +37,15 @@ router.get("/readOne/:id", async (req, res) => {
 //READ ALL
 router.get("/readAll", async (req, res) => {
   try {
-    const users = await userModel.find();
+    let users = await userModel.find()
+    for (const e in users) {
+      const followersId = await followerModel.find({ followed: users[e]._id });
+      const followers = (await userModel.find().where('_id').in(followersId.map(e => e.follower))).length;
+      const followedId = await followerModel.find({ follower: users[e]._id });
+      const followed = (await userModel.find().where('_id').in(followedId.map(e => e.followed))).length;
+      users[e].followers = followers
+      users[e].following = followed
+    }
     res.status(200).json({
       result: users,
     });
