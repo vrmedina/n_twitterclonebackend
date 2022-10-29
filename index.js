@@ -1,3 +1,4 @@
+console.log("\nWelcome to the almighty Twitter API (Copium)");
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
@@ -10,11 +11,11 @@ mongoose.connect(
     "mongodb+srv://vrmedina:admin@cluster0.9aoeewj.mongodb.net/?retryWrites=true&w=majority"
     )
 .then(() => {
-    console.log("Success :)");
+    console.log("\nSuccess: Connected to the database :)");
 })
 .catch((e) => {
     console.log(e)
-    console.log("Error :')")
+    console.log("\nError: Couldn't connect to the database :'(")
 })
 
 // ROUTES DECLARATION
@@ -34,4 +35,4 @@ const likeRoute = require('./routes/likeRoute')
 app.use("/like", likeRoute)
 
 // OPENING APP PORT
-app.listen(3000, () => console.log(`Server Started at ${3000}`))
+app.listen(3000, () => console.log(`\nServer Started at ${3000}`))
