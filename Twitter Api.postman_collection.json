@@ -1,0 +1,488 @@
+{
+	"info": {
+		"_postman_id": "fc1ada14-f50a-4cb3-8d99-54f26a67a526",
+		"name": "Twitter Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CREATE USER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Arnaldo Benavides\",\r\n    \"username\": \"arnaldobenavides\",\r\n    \"location\": \"En Soleda\",\r\n    \"description\": \"PhD. in Mongodb database connection, guayacolato user.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/user/create",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "READ ALL USERS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/user/readAll",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"readAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "READ USER BY ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/user/readOne/635d5fedd95a0bc63745858b",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"readOne",
+						"635d5fedd95a0bc63745858b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE USER BY ID",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Pedro Paramo\",\r\n    \"username\": \"sexymachine69\",\r\n    \"location\": \"Barrio Abajo\",\r\n    \"description\": \"Bebesita brr, Vision-oriented local application\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/user/update/635c479942a4e74c00a0f6dd",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"update",
+						"635c479942a4e74c00a0f6dd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE USER BY ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Pedro Paramo\",\r\n    \"username\": \"sexymachine69\",\r\n    \"location\": \"Barrio Abajo\",\r\n    \"description\": \"Bebesita brr, Vision-oriented local application\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/user/delete/635c479942a4e74c00a0f6dd",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"delete",
+						"635c479942a4e74c00a0f6dd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE TWEET",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"user\": \"635d6090d95a0bc637458590\",\r\n  \"text\": \"Tweet escrito por arnaldobenavides, tercer tweet\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/tweet/create",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tweet",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "READ TWEET BY ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/tweet/readOne/635d617bd95a0bc63745859c",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tweet",
+						"readOne",
+						"635d617bd95a0bc63745859c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "READ TWEETS BY UID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\": \"Mensaje actualizado del tweet de donny\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/tweet/readAll/635d6090d95a0bc637458590",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tweet",
+						"readAll",
+						"635d6090d95a0bc637458590"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE TWEET BY ID",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\": \"Mensaje actualizado del tweet de donny 3 izi pizi\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/tweet/update/635d4d6a2f4446e5fb8d4ac7",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tweet",
+						"update",
+						"635d4d6a2f4446e5fb8d4ac7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE TWEET BY ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/tweet/delete/635d6153d95a0bc63745859a",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tweet",
+						"delete",
+						"635d6153d95a0bc63745859a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE FOLLOW",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"follower\": \"635d5fedd95a0bc63745858b\",\r\n  \"followed\": \"635d6041d95a0bc63745858e\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/follow/create",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"follow",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "READ FOLLOWERS BY UID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/follow/readFollowers/635d5fedd95a0bc63745858b",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"follow",
+						"readFollowers",
+						"635d5fedd95a0bc63745858b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "READ FOLLOWED BY UID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/follow/readFollowed/635d5fedd95a0bc63745858b",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"follow",
+						"readFollowed",
+						"635d5fedd95a0bc63745858b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "READ FOLLOW IDS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/follow/readFollowId/635d5fedd95a0bc63745858b",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"follow",
+						"readFollowId",
+						"635d5fedd95a0bc63745858b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE FOLLOW BY ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/follow/delete/635d5b27009e75a5db9df514",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"follow",
+						"delete",
+						"635d5b27009e75a5db9df514"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE LIKE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"user\": \"635d6090d95a0bc637458590\",\r\n  \"tweet\": \"635d614ad95a0bc637458596\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/like/create",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"like",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "READ LIKED BY UID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/like/readLiked/635d5fedd95a0bc63745858b",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"like",
+						"readLiked",
+						"635d5fedd95a0bc63745858b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "READ USER LIKES BY UID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/like/readLikes/635d5fedd95a0bc63745858b",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"like",
+						"readLikes",
+						"635d5fedd95a0bc63745858b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE LIKE BY ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/like/delete/635d6c7d6d5026c0f46fed76",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"like",
+						"delete",
+						"635d6c7d6d5026c0f46fed76"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "READ TIMELINE BY UID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/timeline/read/635d5fedd95a0bc63745858b",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"timeline",
+						"read",
+						"635d5fedd95a0bc63745858b"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
