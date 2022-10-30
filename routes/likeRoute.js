@@ -15,7 +15,7 @@ router.post("/create", async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 });
-//READ USER LIKED TWEETS
+//READ TWEETS LIKED BY USER ID
 router.get("/readLiked/:uid", async (req, res) => {
   try {
     const liked = await likeModel.find({ user: req.params.uid });
@@ -31,7 +31,7 @@ router.get("/readLiked/:uid", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-//READ USER LIKED TWEETS
+//READ USER LIKED ONLY IDS BY USER ID
 router.get("/readLikes/:uid", async (req, res) => {
   try {
     const liked = await likeModel.find({ user: req.params.uid });
@@ -42,7 +42,7 @@ router.get("/readLikes/:uid", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-//DELETE
+//DELETE LIKE BY LIKE ID
 router.delete("/delete/:id", async (req, res) => {
   try {
     await likeModel.findByIdAndDelete(req.params.id);

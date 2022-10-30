@@ -1,8 +1,9 @@
 const express = require("express");
+const userModel = require("../models/userModel");
 const tweetModel = require("../models/tweetModel");
 const likeModel = require("../models/likeModel");
 const router = express.Router();
-//CREATE
+//CREATE TWEET
 router.post("/create", async (req, res) => {
   const tweet = new tweetModel({
     user: req.body.user,
@@ -10,17 +11,17 @@ router.post("/create", async (req, res) => {
   });
   try {
     await tweet.save();
-    res.status(200).json({message: "Tweet created successfully"});
+    res.status(200).json({ message: "Tweet created successfully" });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 });
-//READ ONE
+//READ TWEET BY TWEET ID
 router.get("/readOne/:twid", async (req, res) => {
   try {
     const tweet = await tweetModel.findById(req.params.twid);
     const likes = await likeModel.find({ tweet: req.params.twid });
-    tweet.likes = likes.length
+    tweet.likes = likes.length;
     res.status(200).json({
       result: tweet,
     });
@@ -28,13 +29,13 @@ router.get("/readOne/:twid", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-//READ ALL
+//READ ONE USER'S TWEETS BY USER ID
 router.get("/readAll/:uid", async (req, res) => {
   try {
-    const tweets = await tweetModel.find({user: req.params.uid});
+    let tweets = await tweetModel.find({ user: req.params.uid });
     for (const e in tweets) {
       const likes = await likeModel.find({ tweet: tweets[e]._id });
-      tweets[e].likes = likes.length
+      tweets[e].likes = likes.length;
     }
     res.status(200).json({
       result: tweets,
@@ -43,13 +44,12 @@ router.get("/readAll/:uid", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-//UPDATE
+//UPDATE TWEET BY TWEET ID
 router.patch("/update/:twid", async (req, res) => {
   try {
-    const tweet = await tweetModel.findByIdAndUpdate(
-      req.params.twid,
-      { $set: {text: req.body.text} }
-    );
+    const tweet = await tweetModel.findByIdAndUpdate(req.params.twid, {
+      $set: { text: req.body.text },
+    });
     res.status(200).json({
       result: "Tweet edited successfully",
     });
@@ -57,7 +57,7 @@ router.patch("/update/:twid", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-//DELETE
+//DELETE TWEET BY TWEET ID
 router.delete("/delete/:twid", async (req, res) => {
   try {
     await tweetModel.findByIdAndDelete(req.params.twid);

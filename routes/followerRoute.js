@@ -15,7 +15,7 @@ router.post("/create", async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 });
-//READ USER FOLLOWERS
+//READ USER FOLLOWERS BY USER ID
 router.get("/readFollowers/:uid", async (req, res) => {
   try {
     const followersId = await followerModel.find({ followed: req.params.uid });
@@ -35,7 +35,7 @@ router.get("/readFollowers/:uid", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-//READ FOLLOWED BY USER
+//READ FOLLOWED BY USER BY USER ID
 router.get("/readFollowed/:uid", async (req, res) => {
   try {
     const followedId = await followerModel.find({ follower: req.params.uid });
@@ -55,7 +55,18 @@ router.get("/readFollowed/:uid", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-//DELETE
+//READ FOLLOWS ONLY IDS BY USER ID
+router.get("/readFollowId/:uid", async (req, res) => {
+  try {
+    const followedId = await followerModel.find({ follower: req.params.uid });
+    res.status(200).json({
+      result: followedId,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+//DELETE FOLLOW BY FOLLOW ID
 router.delete("/delete/:id", async (req, res) => {
   try {
     await followerModel.findByIdAndDelete(req.params.id);
